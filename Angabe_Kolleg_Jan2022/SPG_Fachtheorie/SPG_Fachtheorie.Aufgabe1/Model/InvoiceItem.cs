@@ -1,8 +1,7 @@
 ﻿namespace SPG_Fachtheorie.Aufgabe1.Model
 {
-    public class InvoiceItem
+    public class InvoiceItem : EntityBase
     {
-        public Guid Id { get; set; }
         public Article Article { get; set; }
         public Guid ArticleId { get; set; }
         public Invoice Invoice { get; set; }

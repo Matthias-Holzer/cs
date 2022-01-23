@@ -3,10 +3,9 @@
 namespace SPG_Fachtheorie.Aufgabe1.Model
 {
     public enum Salutation { Mr, Mrs}
-    public class Customer
+    public class Customer : EntityBase
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Address { get; set; }

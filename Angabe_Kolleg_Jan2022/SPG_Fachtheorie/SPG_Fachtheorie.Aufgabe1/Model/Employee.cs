@@ -1,8 +1,7 @@
 ﻿namespace SPG_Fachtheorie.Aufgabe1.Model
 {
-    public class Employee
+    public class Employee : EntityBase
     {
-        public Guid Id { get; set; }
         public string VorName { get; set; }
         public string Nachname { get; set; }
         public List<Invoice> Invoices { get; set; }

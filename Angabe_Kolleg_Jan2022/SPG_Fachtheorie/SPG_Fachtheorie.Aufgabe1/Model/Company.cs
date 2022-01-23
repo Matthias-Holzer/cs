@@ -1,8 +1,7 @@
 ﻿namespace SPG_Fachtheorie.Aufgabe1.Model
 {
-    public class Company
+    public class Company : EntityBase
     {
-        public Guid Id { get; set; }
         public string Name { get; set; }
         public string Address { get; set; }
         public string EMail { get; set; }
