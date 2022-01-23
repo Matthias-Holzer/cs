@@ -36,14 +36,30 @@ namespace SPG_Fachtheorie.Aufgabe2
 
         public bool ConfirmAppointment(Guid appointmentId)
         {
-            // TOTO: Implementiere die Methode
-            return default;
+            var appointment = _db.Appointments.FirstOrDefault(x => x.Id == appointmentId);
+            if (appointment == null) return false;
+            if (appointment.State != AppointmentState.AskedFor) return false;
+
+            appointment.State=AppointmentState.AskedFor;
+            _db.Appointments.Update(appointment);
+            return _db.SaveChanges() == 1;
         }
 
-        public bool CancelAppointment(Guid appointmentId)
+        public bool CancelAppointment(Guid appointmentId, Guid studentId)
         {
-            // TOTO: Implementiere die Methode
-            return default;
+            Appointment appointment = _db.Appointments.FirstOrDefault(x => x.Id == appointmentId);
+            if (appointment == null) return false;
+
+            Student student = _db.Students.FirstOrDefault(x => x.Id == studentId);
+            if (student == null) return false;
+
+            if (appointment.State == AppointmentState.AskedFor || appointment.State == AppointmentState.Confirmed && student.Id == appointment.OfferId)
+            {
+                appointment.State = AppointmentState.Cancelled;
+                _db.Appointments.Update(appointment);
+                return _db.SaveChanges() == 1;
+            }
+            return false;
         }
     }
 }
