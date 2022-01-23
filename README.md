@@ -1,7 +1,7 @@
 # Vorbereitung für die Matura in C#
 ## Aufgabe 1
 ### Tests
-![a1-tests](screenshots/a1-tests.png)
+![a1_tests](screenshots/a1_tests.png)
 
 ### DB
-![a1-db](screenshots/a1-db.png)
+![a1_db](screenshots/a1_db.png)
