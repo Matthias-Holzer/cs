@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SPG_Fachtheorie.Aufgabe2.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,8 +18,20 @@ namespace SPG_Fachtheorie.Aufgabe2
 
         public bool AskForAppointment(Guid offerId, Guid studentId, DateTime date)
         {
-            // TOTO: Implementiere die Methode
-            return default;
+            var offer = _db.Offers.FirstOrDefault(x => x.Id == offerId);    
+            if (offer == null) return false;
+            if (offer.From > date || offer.To < date) return false;
+
+            _db.Appointments.Add(new Appointment()
+            {
+                Id = Guid.NewGuid(),
+                Offer = offer,
+                Student = _db.Students.FirstOrDefault(x => x.Id == studentId),
+                Date = date,
+                Location = "Pausenraum B1",
+                State =AppointmentState.AskedFor
+            });
+            return _db.SaveChanges() == 1;
         }
 
         public bool ConfirmAppointment(Guid appointmentId)
