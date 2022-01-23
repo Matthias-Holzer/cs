@@ -79,27 +79,47 @@ namespace SPG_Fachtheorie.Aufgabe2.Test
         [Fact]
         public void ConfirmAppointmentReturnsFalseIfStateIsInvalid()
         {
+            using var db = GetAppointmentContext();
+            var service = new AppointmentService(db);
+            var appointment = db.Appointments.FirstOrDefault(x => x.State == Model.AppointmentState.TookPlace);
 
+            Assert.False(service.ConfirmAppointment(appointment.Id));
         }
         [Fact]
         public void CancelAppointmentStudentSuccessTest()
         {
+            using var db = GetAppointmentContext();
+            var service = new AppointmentService(db);
+            var appointment = db.Appointments.FirstOrDefault(x => x.State == Model.AppointmentState.AskedFor);
 
+            Assert.True(service.CancelAppointment(appointment.Id, appointment.Offer.Teacher.Id));
         }
         [Fact]
         public void CancelAppointmentCoachSuccessTest()
         {
+            using var db = GetAppointmentContext();
+            var service = new AppointmentService(db);
+            var appointment = db.Appointments.FirstOrDefault(x => x.State == Model.AppointmentState.AskedFor);
 
+            Assert.True(service.CancelAppointment(appointment.Id, appointment.Offer.Teacher.Id));
         }
         [Fact]
         public void ConfirmAppointmentStudentReturnsFalseIfStateIsInvalid()
         {
+            using var db = GetAppointmentContext();
+            var service = new AppointmentService(db);
+            var appointment = db.Appointments.FirstOrDefault(x => x.State == Model.AppointmentState.Confirmed);
 
+            Assert.False(service.CancelAppointment(appointment.Id, appointment.StudentId));
         }
         [Fact]
         public void ConfirmAppointmentCoachReturnsFalseIfStateIsInvalid()
         {
+            using var db = GetAppointmentContext();
+            var service = new AppointmentService(db);
+            var appointment = db.Appointments.FirstOrDefault(x => x.State == Model.AppointmentState.TookPlace);
 
+            Assert.False(service.CancelAppointment(appointment.Id, appointment.Offer.Id));
         }
     }
 }
