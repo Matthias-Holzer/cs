@@ -5,3 +5,7 @@
 
 ### DB
 ![a1_db](screenshots/a1_db.png)
+
+## Aufgabe 2
+### Tests
+![a2_tests](screenshots/a2_tests.png)
