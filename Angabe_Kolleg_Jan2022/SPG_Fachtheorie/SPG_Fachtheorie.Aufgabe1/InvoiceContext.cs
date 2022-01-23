@@ -17,6 +17,7 @@ namespace SPG_Fachtheorie.Aufgabe1
         public DbSet<Company> Companys => Set<Company>();
         public DbSet<Invoice> Invoices => Set<Invoice>();
         public DbSet<InvoiceItem> InvoiceItems => Set<InvoiceItem>();
+        public DbSet<Customer> Customers => Set<Customer>();
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
