@@ -12,6 +12,11 @@ namespace SPG_Fachtheorie.Aufgabe1
     {
         public InvoiceContext(DbContextOptions opt) : base(opt) { }
         // TOTO: Füge die DbSet<T> Collections hinzu.
+        public DbSet<Employee> Employees => Set<Employee>();
+        public DbSet<Article> Articles => Set<Article>();
+        public DbSet<Company> Companys => Set<Company>();
+        public DbSet<Invoice> Invoices => Set<Invoice>();
+        public DbSet<InvoiceItem> InvoiceItems => Set<InvoiceItem>();
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

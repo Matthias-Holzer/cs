@@ -1,5 +1,6 @@
 using Xunit;
 using Microsoft.EntityFrameworkCore;
+using SPG_Fachtheorie.Aufgabe1.Model;
 
 namespace SPG_Fachtheorie.Aufgabe1.Test;
 
@@ -23,5 +24,8 @@ public class InvoiceContextTests
         using var db = new InvoiceContext(options);
         db.Database.EnsureDeleted();
         db.Database.EnsureCreated();
+
+        Employee employee = new Employee() { Name = "Matthias" };
+        db.Employees.Add(employee);
     }
 }
